@@ -1,11 +1,11 @@
 import './App.css';
-import Login from './components/Login/Login';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import UserLogIn from './components/pages/UserLogIn/UserLogIn';
 
 function App() {
   return (
      <>
-        <Login/>
+        <UserLogIn/>
      </>
   );
 }
