@@ -7,8 +7,8 @@
     align-items: center;
 }
 .form-container{
-    height: 70vh;
-    width: 50vw;
+    height: 600px;
+    width: 600px;
     background-color: #FFF;
     overflow: hidden;
     border-radius: 10px;
