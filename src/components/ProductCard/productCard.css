@@ -1,0 +1,12 @@
+.productCard{
+    display: grid;
+    text-align: center;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.image-container{
+    height: 200px;
+    width: 200px;
+}
+.image-container img{
+    max-width: 100%;
+}

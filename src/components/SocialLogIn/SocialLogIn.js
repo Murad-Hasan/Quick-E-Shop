@@ -1,17 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import firebase from "firebase/app";
 import "firebase/auth";
 import firebaseConfig from "../firebaseConfig/firebaseConfig";
 import { useState } from "react";
+import { UserContext } from "../../App";
 
 if (firebase.apps.length === 0) {
   firebase.initializeApp(firebaseConfig);
 }
 
 const SocialLogIn = () => {
-
-    const [userInfo, SetUserInfo] = useState({
-        isLogIn: false,
+  const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+   
+  const [userInfo, SetUserInfo] = useState({
+        isSignIn: false,
         displayName: '',
         email:'',
         photoURL:''
@@ -24,12 +26,15 @@ const SocialLogIn = () => {
       .signInWithPopup(provider)
       .then((result) => {
         const user = result.user;
-        SetUserInfo({
-            isLogIn: true,
-            displayName: user.displayName,
-            email: user.email,
-            photoURL: user.photoURL,
-        })
+        const { displayName, email, photoURL } = user;
+                const userSignIn = {
+                  displayName: displayName,
+                  photoURL: photoURL,
+                    email: email,
+                    isSignIn: true
+                };
+        SetUserInfo(userSignIn)
+        setLoggedInUser(userSignIn)
       })
       .catch((error) => {
         const errorMessage = error.message;
@@ -44,19 +49,21 @@ const SocialLogIn = () => {
     .signInWithPopup(provider)
     .then((result) => {
         const user = result.user
-        SetUserInfo({
-            isLogIn: true,
-            displayName: user.displayName,
-            email: user.email,
-            photoURL: user.photoURL,
-        })
+        const { displayName, email, photoURL } = user;
+                const userSignIn = {
+                  displayName: displayName,
+                  photoURL: photoURL,
+                    email: email,
+                    isSignIn: true
+                };
+        SetUserInfo(userSignIn)
+        setLoggedInUser(userSignIn)
     }).catch((error) => {
         const errorMessage = error.message;
         console.log(errorMessage);
     })
   }
 
-console.log(userInfo);
   return (
     <div className="pt-3 d-flex justify-content-center align-items-center flex-column">
       <strong className="pb-3">Sign in with social network</strong>
