@@ -18,19 +18,19 @@ const Home = () => {
       },[])
       
     return (
-        <>
+        <main style={{background:'#EFEFE9'}}>
             <Container>
-            <form className="input-group w-50 mx-auto my-5">
+            <form className="input-group w-50 mx-auto py-5">
                 <input className="form-control" placeholder="Search" />
                 <button type='button' className="btn btn-outline-danger">Search</button>
             </form>
-            <Row xs={1} md={2} lg={3} className="g-4 my-5">
+            <Row xs={1} md={2} lg={3} className="g-4">
                 {
                     products.map(product => <ProductCard key={product._id} product={product} />)
                 }
             </Row>
             </Container>
-        </>
+        </main>
     );
 };
 
