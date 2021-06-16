@@ -7,6 +7,8 @@ import Header from './components/Header/Header';
 import Home from './components/pages/Home/Home';
 import Dashboard from './components/Dashboard/Dashboard';
 import CheckOut from './components/pages/CheckOut/CheckOut';
+import PrivatePouter from './components/PrivateRouter/PrivatePouter';
+import Orders from './components/pages/Orders/Orders';
 
 export const UserContext = createContext();
 
@@ -23,14 +25,20 @@ function App() {
               <Route path='/login'>
                   <UserLogIn/>
               </Route>
-              <Route path='/dashboard'>
+              <PrivatePouter path='/dashboard'>
                   <Dashboard/>
-              </Route>
-              <Route path='/checkout/:id'>
+              </PrivatePouter>
+              <PrivatePouter path='/checkout/:id'>
                   <CheckOut/>
-              </Route>
-              <Route path='/checkout'>
+              </PrivatePouter>
+              <PrivatePouter path='/checkout'>
                   <CheckOut/>
+              </PrivatePouter>
+              <PrivatePouter path='/order'>
+                  <Orders/>
+              </PrivatePouter>
+              <Route path='*'>
+                  <UserLogIn/>
               </Route>
            </Switch>
         </Router>
