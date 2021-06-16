@@ -5,7 +5,6 @@ import './productCard.css'
 
 const ProductCard = ({product}) => {
     const { _id,image, name, price} = product;
-    console.log(product);
     return (
         <Col>
         <Card className="shadow mb-4" style={{ borderRadius: "20px", border: 0 , height:'500px'}}>

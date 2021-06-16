@@ -9,6 +9,7 @@ import Dashboard from './components/Dashboard/Dashboard';
 import CheckOut from './components/pages/CheckOut/CheckOut';
 import PrivatePouter from './components/PrivateRouter/PrivatePouter';
 import Orders from './components/pages/Orders/Orders';
+import NoMatch from './components/pages/NoMatch/NoMatch';
 
 export const UserContext = createContext();
 
@@ -38,7 +39,7 @@ function App() {
                   <Orders/>
               </PrivatePouter>
               <Route path='*'>
-                  <UserLogIn/>
+                  <NoMatch/>
               </Route>
            </Switch>
         </Router>

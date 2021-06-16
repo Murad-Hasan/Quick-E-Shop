@@ -8,7 +8,7 @@ const PrivatePouter = ({children, ...rest}) => {
         <Route
             {...rest}
             render={({location}) => 
-            loggedInUser.email ? (
+             loggedInUser.email  ? (
                 children
             ) :
             (
