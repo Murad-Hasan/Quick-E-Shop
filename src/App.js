@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Home from './components/pages/Home/Home';
 import Dashboard from './components/Dashboard/Dashboard';
+import CheckOut from './components/pages/CheckOut/CheckOut';
 
 export const UserContext = createContext();
 
@@ -24,6 +25,12 @@ function App() {
               </Route>
               <Route path='/dashboard'>
                   <Dashboard/>
+              </Route>
+              <Route path='/checkout/:id'>
+                  <CheckOut/>
+              </Route>
+              <Route path='/checkout'>
+                  <CheckOut/>
               </Route>
            </Switch>
         </Router>

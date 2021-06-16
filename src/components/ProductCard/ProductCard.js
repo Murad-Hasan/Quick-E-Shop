@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './productCard.css'
 
 const ProductCard = ({product}) => {
-    const {_id, image, name, price} = product;
+    const { _id,image, name, price} = product;
     console.log(product);
     return (
         <Col>
@@ -29,8 +29,7 @@ const ProductCard = ({product}) => {
                 </Card.Title>
                 <Button
                     as={Link}
-                    to="checkout"
-                    // onClick={() => setCart(props.product)}
+                    to={`/checkout/${_id}`}
                     className="buy-btn shadow-none">
                     Buy Now
                 </Button>
