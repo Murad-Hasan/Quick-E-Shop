@@ -27,7 +27,7 @@ const Orders = () => {
            <tbody>
                 {
                     showOrder.map((order)=>(
-                        <tr>
+                        <tr key={order._id}>
                 <td>{order.name}</td>
                 <td>{order.price}</td>
                 <td>{

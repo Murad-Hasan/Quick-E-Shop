@@ -3,7 +3,9 @@ import React from 'react';
 const ProductAdd = () => {
     return (
         <div>
-            <h2>product add</h2>
+            <div className="manage__header px-4">
+            <h2>Add A New Product</h2>
+            </div>
         </div>
     );
 };
