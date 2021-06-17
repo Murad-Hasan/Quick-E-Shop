@@ -44,6 +44,7 @@ const SocialLogIn = () => {
       .catch((error) => {
         const errorMessage = error.message;
         console.log(errorMessage);
+        alert(errorMessage)
       });
   };
   
@@ -67,6 +68,7 @@ const SocialLogIn = () => {
     }).catch((error) => {
         const errorMessage = error.message;
         console.log(errorMessage);
+        alert(errorMessage)
     })
   }
 

@@ -1,17 +1,69 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import firebase from "firebase/app";
+import "firebase/auth";
+import firebaseConfig from '../firebaseConfig/firebaseConfig';
+import { useHistory, useLocation } from 'react-router-dom';
+import { UserContext } from '../../App';
+if (firebase.apps.length === 0) {
+  firebase.initializeApp(firebaseConfig);
+}
 
 const SignUp = () => {
+  const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+  const history = useHistory();
+  const location = useLocation();
+  const { from } = location.state || { from: { pathname: "/" } };
+   
+  const [userInfo, SetUserInfo] = useState({
+        isSignIn: false,
+        displayName: '',
+        email:'',
+        password: ''
+    })
     const {
         register,
         formState: { errors },
         getValues,
         handleSubmit,
       } = useForm();
+
       const onSubmit = (data, e) => {
+          if (data.email && data.password) {
+            firebase
+              .auth()
+              .createUserWithEmailAndPassword(data.email, data.password)
+              .then((res) => {
+                const newUserInfo = { ...userInfo };
+                newUserInfo.isSignIn = true;
+                newUserInfo.displayName = data.name;
+                newUserInfo.email = data.email;
+                newUserInfo.password = data.password;
+                SetUserInfo(newUserInfo);
+                setLoggedInUser(newUserInfo);
+                history.replace(from);
+                updateUserName(data.name)
+              })
+              .catch((error) => {
+                alert(error.message)
+              });
+          }
         e.target.reset();
-        alert(JSON.stringify(data));
       };
+      const updateUserName = name => {
+        const user = firebase.auth().currentUser;
+        user
+          .updateProfile({
+            displayName: name
+          })
+          .then(function () {
+            console.log('update user name successfully');
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      };
+
     return (
         <>
          <h3 className="fw-bold">Sign Up</h3>

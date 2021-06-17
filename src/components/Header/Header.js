@@ -21,7 +21,7 @@ const Header = () => {
                         <Nav.Link as={Link} to='dashboard' style={{ fontWeight: "500" }}>Admin</Nav.Link>
                         <Nav.Link as={Link} to='checkout' style={{ fontWeight: "500" }}>CheckOut</Nav.Link>
                         {
-                            loggedInUser.photoURL ? <img style={{height:'50px', width:'50px', borderRadius:'50%' }} src={loggedInUser.photoURL} alt="profile" /> : <Nav.Link as={Link} to='/login' style={{ fontWeight: "500" }}>LogIn</Nav.Link>
+                            loggedInUser.displayName || loggedInUser.email ? <Nav.Link as={Link} to='/login' style={{ fontWeight: "500" }}>{loggedInUser.displayName || loggedInUser.email}</Nav.Link>  : <Nav.Link as={Link} to='/login' style={{ fontWeight: "500" }}>LogIn</Nav.Link>
                         }
                     </Nav>
                 </Navbar.Collapse>

@@ -1,15 +1,45 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-
+import firebase from "firebase/app";
+import "firebase/auth";
+import firebaseConfig from '../firebaseConfig/firebaseConfig';
+import { useHistory, useLocation } from 'react-router-dom';
+import { UserContext } from '../../App';
+if (firebase.apps.length === 0) {
+  firebase.initializeApp(firebaseConfig);
+}
 const LogIn = () => {
+  const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+  const history = useHistory();
+  const location = useLocation();
+  const { from } = location.state || { from: { pathname: "/" } };
+  const [userInfo, SetUserInfo] = useState({
+    isSignIn: false,
+    displayName: '',
+    email:'',
+    password: ''
+})
     const {
         register,
         formState: { errors },
         handleSubmit,
       } = useForm();
       const onSubmit = (data, e) => {
+        firebase.auth().signInWithEmailAndPassword(data.email, data.password)
+       .then((user) => {
+        const newUserInfo = { ...userInfo };
+        newUserInfo.isSignIn = true;
+        newUserInfo.email = data.email;
+        newUserInfo.password = data.password;
+        SetUserInfo(newUserInfo);
+        setLoggedInUser(newUserInfo);
+        history.replace(from);
+  })
+  .catch((error) => {
+    const errorMessage = error.message;
+    alert(errorMessage)
+  });
         e.target.reset();
-        alert(JSON.stringify(data));
       };
     return (
         <>
