@@ -23,10 +23,10 @@ const ProductManage = () => {
             method: "DELETE"
         })
         .then(res => {
-          console.log("response",res);
+          // console.log("response",res);
         })
         .catch((error) => {
-          console.log('error massage for delete book',error);
+          console.log('error massage',error);
       })
       setProducts(products.filter(product => product._id !== id))
        }
@@ -58,7 +58,6 @@ const ProductManage = () => {
                   ))
               }
           </tbody>
-          
        </Table>
             </div>
         </div>

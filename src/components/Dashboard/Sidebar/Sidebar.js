@@ -10,19 +10,19 @@ const Sidebar = ({active, match}) => {
         <nav className="sidebar__nav">
             <Link
                 className={`sidebar__link ${active === 'manage' ? 'active' : ''}`}
-                to={`${match.path}/manage`}>
+                to={`${match.path}/manageProduct`}>
                 <span><BsFillGrid3X3GapFill/> <strong className='m-2'>Manage Product</strong></span>
             </Link>
 
             <Link
                 className={`sidebar__link ${active === 'add' ? 'active' : ''}`}
-                to={`${match.path}/add`}>
+                to={`${match.path}/addProduct`}>
                 <span><BsPlusCircleFill/><strong className='m-2'>Add Product</strong></span>
             </Link>
 
             <Link
                 className={`sidebar__link ${active === 'edit' ? 'active' : ''}`}
-                to={`${match.path}/edit`}>
+                to={`${match.path}/editProduct`}>
                 <span><BsPencilSquare/> <strong className='m-2'>Edit Product</strong></span>
             </Link>
         </nav>

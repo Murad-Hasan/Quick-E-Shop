@@ -12,13 +12,13 @@ const MainContent = ({match}) => {
                     <Route exact path={`${match.path}/`}>
                         <ProductManage />
                     </Route>
-                    <Route path={`${match.path}/manage`}>
+                    <Route path={`${match.path}/manageProduct`}>
                         <ProductManage />
                     </Route>
-                    <Route path={`${match.path}/add`}>
+                    <Route path={`${match.path}/addProduct`}>
                         <ProductAdd />
                     </Route>
-                    <Route path={`${match.path}/edit`}>
+                    <Route path={`${match.path}/editProduct`}>
                         <ProductEdit />
                     </Route>
                 </Switch>
