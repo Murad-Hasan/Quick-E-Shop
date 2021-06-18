@@ -8,7 +8,7 @@ const ProductManage = () => {
     const [products, setProducts] = useState([])
     async function getProduct() {
         try {
-          const response = await axios.get('http://localhost:5000/products');
+          const response = await axios.get('https://quick-e-shop.herokuapp.com/products');
           setProducts(response.data)
         } catch (error) {
           console.error(error);
@@ -19,7 +19,7 @@ const ProductManage = () => {
       },[])
 
       const deleteBook = (id) =>{
-        fetch(`http://localhost:5000/delete/${id}`,{
+        fetch(`https://quick-e-shop.herokuapp.com/delete/${id}`,{
             method: "DELETE"
         })
         .then(res => {

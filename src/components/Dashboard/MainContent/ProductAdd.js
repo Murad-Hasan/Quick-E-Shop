@@ -13,7 +13,7 @@ const ProductAdd = () => {
             image: imageURL
         }
   
-   const url = `http://localhost:5000/addProduct`
+   const url = `https://quick-e-shop.herokuapp.com/addProduct`
         fetch(url, {
             method: 'POST' ,
             headers: {

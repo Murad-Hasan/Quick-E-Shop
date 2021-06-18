@@ -9,7 +9,7 @@ const CheckOut = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext)
     const [product, setProduct] = useState([]);
     useEffect(() => {
-      fetch("http://localhost:5000/singleProduct/"+ id)
+      fetch("https://quick-e-shop.herokuapp.com/singleProduct/"+ id)
         .then((res) => res.json())
         .then((data) => setProduct(data));
     }, [id]);
@@ -21,7 +21,7 @@ const CheckOut = () => {
         let today = new Date();
         let dateFormate=today.getDate() + "-"+ parseInt(today.getMonth()+1) +"-"+today.getFullYear();
         const confirmOrder = {name, price, ...loggedInUser, date: dateFormate}
-        fetch('http://localhost:5000/addorder', {
+        fetch('https://quick-e-shop.herokuapp.com/addorder', {
           method: 'POST' ,
           headers: {
               'content-type' : 'application/json'
