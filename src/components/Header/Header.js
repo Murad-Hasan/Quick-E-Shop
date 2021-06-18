@@ -17,9 +17,9 @@ const Header = () => {
                     <Nav className="ms-auto" />
                     <Nav>
                         <Nav.Link as={Link} to='/' style={{ fontWeight: "500" }}>Home</Nav.Link>
-                        <Nav.Link as={Link} to='order' style={{ fontWeight: "500" }}>Order</Nav.Link>
-                        <Nav.Link as={Link} to='dashboard' style={{ fontWeight: "500" }}>Admin</Nav.Link>
-                        <Nav.Link as={Link} to='checkout' style={{ fontWeight: "500" }}>CheckOut</Nav.Link>
+                        <Nav.Link as={Link} to='/order' style={{ fontWeight: "500" }}>Order</Nav.Link>
+                        <Nav.Link as={Link} to='/dashboard' style={{ fontWeight: "500" }}>Admin</Nav.Link>
+                        <Nav.Link as={Link} to='/checkout' style={{ fontWeight: "500" }}>CheckOut</Nav.Link>
                         {
                             loggedInUser.displayName || loggedInUser.email ? <Nav.Link as={Link} to='/login' style={{ fontWeight: "500" }}>{loggedInUser.displayName || loggedInUser.email}</Nav.Link>  : <Nav.Link as={Link} to='/login' style={{ fontWeight: "500" }}>LogIn</Nav.Link>
                         }
